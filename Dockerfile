@@ -1,7 +1,7 @@
 # Build the upstream DNSTT server and the HTTP DoH-to-local-UDP gateway.
 FROM golang:1.25-bookworm AS build
 RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates && rm -rf /var/lib/apt/lists/*
-RUN git clone --depth 1 --branch v1.20260501.0 https://www.bamsoftware.com/git/dnstt.git /src/dnstt
+RUN git clone --branch v1.20260501.0 https://www.bamsoftware.com/git/dnstt.git /src/dnstt
 WORKDIR /src/dnstt/dnstt-server
 RUN go build -trimpath -ldflags="-s -w" -o /out/dnstt-server .
 COPY doh_gateway.go /src/doh_gateway.go
