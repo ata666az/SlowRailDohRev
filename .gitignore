@@ -1,0 +1,5 @@
+.env
+*.key
+server.key
+server.pub
+.DS_Store
